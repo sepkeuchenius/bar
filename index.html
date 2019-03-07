@@ -11,6 +11,19 @@
 
   <!-- <link rel="icon" href="sk.png" type="image/gif" sizes="20x20"> -->
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAC2hgUN6GjrmzLEnkCT_515hUATy85cjw",
+    authDomain: "bar-kassa.firebaseapp.com",
+    databaseURL: "https://bar-kassa.firebaseio.com",
+    projectId: "bar-kassa",
+    storageBucket: "bar-kassa.appspot.com",
+    messagingSenderId: "58555822847"
+  };
+  firebase.initializeApp(config);
+</script>
 
   <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'>
   </script>
@@ -21,10 +34,12 @@
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             ">
-  <header class="mdl-layout__header" style='box-shadow: none;'>
+            <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style='width: 100%;' id='load'></div>
+
+  <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <div class="mdl-layout-spacer">
-<span class='mdl-layout-title'>Kassa</span>
+<span class='mdl-layout-title'><img src='assets/camel.png' style='width: 50px'>&nbsp Camelbar Rekening <span id='usertitle'></span></span>
       </div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
@@ -39,40 +54,32 @@
       </div>
     </div>
   </header>
-  <div class="mdl-layout__drawer" style='box-shadow: none; border: none;'>
+  <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Rekeningen</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Sep <i class='material-icons' style="vertical-align: middle; float: right;">more_vert</i></a>
-      <a class="mdl-navigation__link" href="">Natalie <i class='material-icons' style="vertical-align: middle; float: right;">more_vert</i></a>
-      <a class="mdl-navigation__link" href="">Melle <i class='material-icons' style="vertical-align: middle; float: right;">more_vert</i></a>
-      <a class="mdl-navigation__link" href="">Floris <i class='material-icons' style="vertical-align: middle; float: right;">more_vert</i></a>
-      <a class="mdl-navigation__link" href="">Maartje <i class='material-icons' style="vertical-align: middle; float: right;">more_vert</i></a>
-      <a class="mdl-navigation__link" href="">Yoricke <i class='material-icons' style="vertical-align: middle; float: right;">more_vert</i></a>
+
     </nav>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style='position:absolute; bottom: 20px; right: 20px;'>
-      <i class="material-icons">add</i>
-    </button>
+
   </div>
 
   <main class="mdl-layout__content">
-
 <div id='kassa'>
   <!-- <div id='head'>
   <div style='display: table-cell; vertical-align: middle; color: black; '>Kassa</div>
   </div> -->
   <div id='products'>
     <!-- <center> -->
-    <div class="mdl-cell mdl-cell--2-col product" id='cola'><div class='productName'>Fris</div></div>
-    <div class="mdl-cell mdl-cell--2-col product" id='bier'><div class='productName'>Bier</div></div>
-    <div class="mdl-cell mdl-cell--2-col product" id='wijn'><div class='productName'>Wijn</div></div>
-    <div class="mdl-cell mdl-cell--2-col product" id='speciaal'><div class='productName'>Speciaal bier</div></div>
-    <div class="mdl-cell mdl-cell--2-col product" id='flugel'><div class='productName'>Shots</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Fris'><div class='productName'>Fris</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Bier'><div class='productName'>Bier</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Wijn'><div class='productName'>Wijn</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Speciaal'><div class='productName'>Speciaal bier</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Shots'><div class='productName'>Shots</div></div>
     <hr style='width: 50%; margin-left:20px;'>
-    <div class="mdl-cell mdl-cell--2-col product" id='frikandel'><div class='productName'>Frituur 0.50</div></div>
-    <div class="mdl-cell mdl-cell--2-col product" id='bitter'><div class='productName'>Frituur 1.50</div></div>
-    <div class="mdl-cell mdl-cell--2-col product" id='vlam'><div class='productName'>Frituur 2.00</div></div>
-    <div class="mdl-cell mdl-cell--2-col product" id='chips'><div class='productName'>Chips</div></div>
-    <div class="mdl-cell mdl-cell--2-col product" id='choco'><div class='productName'>Chocola</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Frituur_050'><div class='productName'>Frituur 0.50</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Frituur_150'><div class='productName'>Frituur 1.50</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Frituur_200'><div class='productName'>Frituur 2.00</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Chips'><div class='productName'>Chips</div></div>
+    <div class="mdl-cell mdl-cell--2-col product" id='Chocola'><div class='productName'>Chocola</div></div>
     <hr style='width: 50%; margin-left:20px;'>
     <div class="mdl-cell mdl-cell--2-col product" id=''><h1 style='text-align:center'>0.10</h1></div>
     <div class="mdl-cell mdl-cell--2-col product" id=''><h1 style='text-align:center'>0.50</h1></div>
@@ -109,16 +116,19 @@
   <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent" style="vertical-align: middle; padding:0;">
     <h5 style="vertical-align: middle; margin:0; text-align:center;padding: 0;">X6</h5>
   </button>
-
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style='position:absolute; bottom: 20px; right: 20px;'>
+    <i class="material-icons">add</i>
+  </button>
   </div>
 
   <div id='bill'>
     <span class="mdl-layout-title" style='text-align: center;'>Totale Rekening</span>
     <hr>
-
+    <ul id='billList' class="demo-list-icon mdl-list">
+    </ul>
 
     <div id='due'>
-    <hr style='width:100%;'> &euro; </div>
+    <hr style='width:100%;'> &euro; <span id='due-amount'></span> </div>
 </div>
   </div>
 
