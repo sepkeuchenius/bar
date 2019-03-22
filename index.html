@@ -95,41 +95,47 @@
   <div id='actions'>
 
 
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent" onclick='deleter()'>
     <i class="material-icons">delete</i>
   </button>
   <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent">
     <i class="material-icons">more_horiz</i>
   </button>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent" style="vertical-align: middle; padding:0;">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent multi" style="vertical-align: middle; padding:0;" id='x2' onclick='multiplier($(this))'>
     <h5 style="vertical-align: middle; margin:0; text-align:center;padding: 0;">X2</h5>
   </button>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent" style="vertical-align: middle; padding:0;">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent multi" style="vertical-align: middle; padding:0;" id='x3' onclick='multiplier($(this))'>
     <h5 style="vertical-align: middle; margin:0; text-align:center;padding: 0;">X3</h5>
   </button>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent" style="vertical-align: middle; padding:0;">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent multi" style="vertical-align: middle; padding:0;" id='x4' onclick='multiplier($(this))'>
     <h5 style="vertical-align: middle; margin:0; text-align:center;padding: 0;">X4</h5>
   </button>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent" style="vertical-align: middle; padding:0;">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent multi" style="vertical-align: middle; padding:0;" id='x5' onclick='multiplier($(this))'>
     <h5 style="vertical-align: middle; margin:0; text-align:center;padding: 0;">X5</h5>
   </button>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent" style="vertical-align: middle; padding:0;">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent multi" style="vertical-align: middle; padding:0;" id='x6' onclick='multiplier($(this))'>
     <h5 style="vertical-align: middle; margin:0; text-align:center;padding: 0;">X6</h5>
   </button>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style='position:absolute; bottom: 20px; right: 20px;'>
+  <!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style='position:absolute; bottom: 20px; right: 20px;' >
     <i class="material-icons">add</i>
-  </button>
+  </button> -->
+
+
   </div>
 
   <div id='bill'>
-    <span class="mdl-layout-title" style='text-align: center;'>Totale Rekening</span>
+    <span class="mdl-layout-title" style='text-align: center;'>Bon</span>
     <hr>
     <ul id='billList' class="demo-list-icon mdl-list">
     </ul>
 
     <div id='due'>
     <hr style='width:100%;'> &euro; <span id='due-amount'></span> </div>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style='position:absolute; right: 5px; bottom: 10px; max-width:10px !important; min-width: 30px !important; height: 30px !important;' onclick='clearCart()'>
+      <i class="material-icons">clear</i>
+    </button>
 </div>
+
   </div>
 
 
