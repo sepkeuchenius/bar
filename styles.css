@@ -36,9 +36,13 @@ padding: 20px;
 .mdl-layout__drawer{
 /* background: #d66464; */
 }
-#bill, #kassa{
+#kassa{
   height: 100%;
-  display: inline-block;
+  display: flex;
+}
+#bill{
+  height: 100%;
+  display: flex;
 }
 #actions{
   position: absolute;
