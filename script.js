@@ -135,6 +135,7 @@ $('.product').on('click', function(){
         }
         else{
           loadBill()
+          productSucces()
         }
       }
 
@@ -142,7 +143,9 @@ $('.product').on('click', function(){
   })
 
 })
-
+function productSucces(){
+  $('#billList').css('background', 'green')
+}
 
 function clearCart(){
   if(currentUser.length < 1 || prompt('Code') != 5831 || !confirm('Zeker weten?')){
