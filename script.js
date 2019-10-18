@@ -8,6 +8,7 @@
 
 
 //uservars
+var snackbarContainer = document.querySelector('#demo-snackbar-example');
 var activeUser = [];
 var currentUser = '';
 var products = []; //Firebase Database
@@ -18,6 +19,25 @@ var del = 1;
 var mult = 1;
 var loader = true;
 
+function addnewUser(){
+  var naam = prompt("Voer een naam in:")
+  var datab = firebase.database().ref();
+  var allUsers = datab.child('users');
+  var newUser = allUsers.child(naam);
+  newUser.set({
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0,
+    "10": 0
+  });
+}
 
 
 //database variables
@@ -86,7 +106,7 @@ database.ref('users').once('value').then(function(snapshot){
     $('#usertitle').html(' &rarr; ' + currentUser)
 
     loadBill()
-    $(this).detach().prependTo('.mdl-navigation')
+    //$(this).detach().prependTo('.mdl-navigation')
   })
 })
 
@@ -109,7 +129,8 @@ function loadBill(){
 //button clicks
 $('.product').on('click', function(){
   var product = $(this).attr('id')
-  console.log(product)
+
+//find i for the addition
   for(var i in products){
     if(product == products[i]){
       console.log(products[i])
@@ -119,10 +140,19 @@ $('.product').on('click', function(){
   database.ref('users/' + currentUser).once('value').then(function(snapshot){
     var userdata = snapshot.val()
     // var userdata = data.currentUser
+    var msg = mult +' '+ products[i] + ' toegevoegd'
     userdata[i] = userdata[i] + 1 * del * mult;
-    if(del = -1){
+    if(del == -1){
+        msg = mult +' '+ products[i] + ' verwijderd'
     deleter()
   }
+
+  var data = {
+     message: msg,
+     timeout: 3000,
+     actionText: 'Undo'
+   };
+   snackbarContainer.MaterialSnackbar.showSnackbar(data);
   if(mult != 1){
     mult = 1;
     $('.multi').css('box-shadow', 'none')
@@ -135,7 +165,7 @@ $('.product').on('click', function(){
         }
         else{
           loadBill()
-          productSucces()
+        // productSucces()
         }
       }
 
@@ -143,9 +173,7 @@ $('.product').on('click', function(){
   })
 
 })
-function productSucces(){
-  $('#billList').css('background', 'green')
-}
+
 
 function clearCart(){
   if(currentUser.length < 1 || prompt('Code') != 5831 || !confirm('Zeker weten?')){
@@ -162,11 +190,16 @@ function clearCart(){
 }
 
 function removeUser(el){
+  var username = $(el).parent().attr('id').substr(2);
+  var alluser = database.ref('users')
   if(prompt('Code') != 5831 || !confirm('Zeker weten?')){
     alert('Afgebroken')
     return;
   }
-el.parent().remove()
+  else{
+    alluser.child(username).remove();
+  }
+//el.parent().remove()
 
 
 } //just removing the element for now, database comes later
