@@ -37,6 +37,7 @@ function addnewUser(){
     "9": 0,
     "10": 0
   });
+  location.reload()
 }
 
 
@@ -198,6 +199,7 @@ function removeUser(el){
   }
   else{
     alluser.child(username).remove();
+    location.reload();
   }
 //el.parent().remove()
 
