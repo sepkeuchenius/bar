@@ -19,6 +19,12 @@ var del = 1;
 var mult = 1;
 var loader = true;
 
+
+var ref = firebase.database().ref("users");
+firebase.database().ref().on('value', function(snapshot) {
+    loadBill()
+});
+
 function addnewUser(){
   var naam = prompt("Voer een naam in:")
   var datab = firebase.database().ref();
