@@ -137,6 +137,12 @@ button{
 .user{
   cursor: pointer;
 }
+.mdl-snackbar, .mdl-js-snackbar{
+  /* top: 0 !important;
+  right: 0 !important;
+  width: 100%;
+  text-align: right; */
+}
 #Fris{background: url('https://images-na.ssl-images-amazon.com/images/I/511rL-aYd9L._SX385_.jpg') center / cover;}
 #icetea{background: url('https://www.horescasmulders.nl/img/products/large/7210051_02.jpg') center / cover; }
 #Bier{background: url('http://www.weekvanhetnederlandsebier.nl/e2/wnb/app/custom/upload/bieren/hertog_jan/2016/.cache/hertog_jan_karakter-80-150_150_2.png') center / cover; }

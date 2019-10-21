@@ -178,7 +178,9 @@ $('.product').on('click', function(){
 
     );
   })
-
+  var allusers = database.child('users')
+  var curuser = allusers.child(currentUser)
+  //curuser.child('last').set(new Date().toString())
 })
 
 
