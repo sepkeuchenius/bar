@@ -144,7 +144,7 @@ $('.product').on('click', function(){
       break;
     }
   }
-  database.ref('Log').push({"date": moment().format('DD-MM-YYYY, HH:mm:ss'), "amount": del * mult, "product": products[i], "user":currentUser})
+  database.ref('Log').push({"date": moment().format('DD-MM-YYYY, HH:mm:ss'), "amount": del * mult, "product": products[i], "user":currentUser});
   database.ref('users/' + currentUser).once('value').then(function(snapshot){
     var userdata = snapshot.val()
     // var userdata = data.currentUser
