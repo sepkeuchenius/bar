@@ -18,7 +18,7 @@ var productPrices = []; //Firebase Database
 var del = 1;
 var mult = 1;
 var loader = true;
-
+alert(window.navigator.userAgent)
 
 var ref = firebase.database().ref("users");
 firebase.database().ref().on('value', function(snapshot) {
